@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "./tokens.css";
+
+@layer base {
+  html {
+    font-family: var(--font-body);
+    background-color: var(--color-canvas-dark);
+    color: var(--color-ink-light);
+    scroll-behavior: smooth;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    overflow-x: clip;
+    min-height: 100dvh;
+    background-color: var(--color-canvas-dark);
+    color: var(--color-ink-light);
+  }
+
+  #root {
+    overflow-x: clip;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+/* Typography scales */
+.hero-headline {
+  font-size: clamp(2.15rem, 5.5vw, 5.15rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
+.inner-h1 {
+  font-size: clamp(1.85rem, 4vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.section-h2 {
+  font-size: clamp(1.45rem, 3.2vw, 2.85rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.card-h3 {
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  line-height: 1.25;
+}
+
+/* Accessible focus outlines */
+:focus-visible {
+  outline: 2px solid var(--color-accent-yellow);
+  outline-offset: 3px;
+}
+
+/* Custom subtle ambient glow matching approved reference */
+.ambient-gold-glow {
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 0%,
+    rgba(247, 217, 40, 0.09) 0%,
+    rgba(247, 217, 40, 0.02) 45%,
+    transparent 75%
+  );
+}
+
+/* Skip link */
+.skip-to-content {
+  position: absolute;
+  left: -9999px;
+  top: 16px;
+  z-index: 100;
+  background: var(--color-accent-yellow);
+  color: var(--color-ink-dark);
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 9999px;
+}
+
+.skip-to-content:focus {
+  left: 16px;
+}
+
+/* Prevent accidental zoom on iOS inputs */
+@media (max-width: 767px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+/* Reduced motion safeguard */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
